@@ -1,9 +1,15 @@
 #include <iostream>
 #include <cmath>
 
-// Função para calcular as raízes de uma equação quadrática
+// Função para calcular o discriminante (Delta)
+double calcularDiscriminante(double a, double b, double c) {
+    return b * b - 4 * a * c;
+}
+
+// Função para calcular as raízes de uma equação 
 void resolverEquacaoQuadratica(double a, double b, double c) {
-    double discriminante = b * b - 4 * a * c;
+    double discriminante = calcularDiscriminante(a, b, c);
+    std::cout << "Delta (Δ) = " << discriminante << std::endl;
 
     if (discriminante > 0) {
         double x1 = (-b + std::sqrt(discriminante)) / (2 * a);
@@ -25,11 +31,19 @@ void resolverEquacaoQuadratica(double a, double b, double c) {
 }
 
 int main() {
-    double a = 1;
-    double b = 2;
-    double c = -8;
+    double a, b, c;
+
+    // Solicitar input do usuário para os coeficientes a, b e c
+    std::cout << "Digite o coeficiente a: ";
+    std::cin >> a;
+    std::cout << "Digite o coeficiente b: ";
+    std::cin >> b;
+    std::cout << "Digite o coeficiente c: ";
+    std::cin >> c;
 
     std::cout << "Resolvendo a equação: " << a << "x^2 + " << b << "x + " << c << " = 0" << std::endl;
+
+    // Resolver a equação e exibir o resultado
     resolverEquacaoQuadratica(a, b, c);
 
     return 0;
